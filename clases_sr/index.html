@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buscador de Películas — Recomendador</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #12141c;
+    --bg-raised: #1a1d29;
+    --marquee: #e8b94c;
+    --marquee-dim: #a3823a;
+    --velvet: #8b2e2e;
+    --ink: #edeae1;
+    --ink-dim: #9a9ba8;
+    --line: #2a2d3a;
+    --radius: 4px;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 15% 0%, rgba(232,185,76,0.06), transparent 40%),
+      radial-gradient(circle at 85% 100%, rgba(139,46,46,0.08), transparent 45%);
+    color: var(--ink);
+    font-family: 'Archivo', sans-serif;
+    min-height: 100vh;
+    padding: 48px 20px 80px;
+  }
+
+  .wrap{
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* ---- Header / marquee ---- */
+  header{
+    text-align:center;
+    margin-bottom: 40px;
+  }
+
+  .eyebrow{
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--marquee-dim);
+    margin: 0 0 10px;
+  }
+
+  h1{
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 8vw, 64px);
+    letter-spacing: 0.04em;
+    line-height: 1;
+    margin: 0;
+    color: var(--marquee);
+    text-shadow: 0 0 24px rgba(232,185,76,0.25);
+  }
+
+  .sub{
+    color: var(--ink-dim);
+    font-size: 14px;
+    margin-top: 10px;
+  }
+
+  /* ---- Sprocket strip (signature element) ---- */
+  .sprockets{
+    display:flex;
+    justify-content:space-between;
+    padding: 0 6px;
+    margin: 28px 0 0;
+  }
+  .sprockets span{
+    width:10px; height:10px;
+    border-radius:2px;
+    background: var(--line);
+  }
+
+  /* ---- Search ticket ---- */
+  .ticket{
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px;
+    margin-top: 0;
+    position: relative;
+  }
+
+  .ticket::before, .ticket::after{
+    content:"";
+    position:absolute;
+    top:50%; transform: translateY(-50%);
+    width:18px; height:18px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius:50%;
+  }
+  .ticket::before{ left:-10px; }
+  .ticket::after{ right:-10px; }
+
+  .field-row{
+    display:flex;
+    gap:10px;
+  }
+
+  input[type="text"]{
+    flex:1;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-family:'Archivo', sans-serif;
+    font-size:15px;
+    padding: 13px 14px;
+    border-radius: var(--radius);
+    outline:none;
+    transition: border-color .15s ease;
+  }
+  input[type="text"]:focus{ border-color: var(--marquee-dim); }
+  input[type="text"]::placeholder{ color:#5c5e6c; }
+
+  .n-select{
+    background: var(--bg);
+    border: 1px solid var(--line);
+    color: var(--ink-dim);
+    font-family:'Space Mono', monospace;
+    font-size: 13px;
+    border-radius: var(--radius);
+    padding: 0 10px;
+  }
+
+  button{
+    background: var(--marquee);
+    color: #1a1408;
+    border:none;
+    font-family:'Archivo', sans-serif;
+    font-weight:700;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    padding: 0 22px;
+    border-radius: var(--radius);
+    cursor:pointer;
+    transition: filter .15s ease, transform .05s ease;
+  }
+  button:hover{ filter: brightness(1.08); }
+  button:active{ transform: translateY(1px); }
+  button:disabled{ background: var(--line); color: var(--ink-dim); cursor:not-allowed; }
+
+  .meta-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top: 14px;
+    font-family:'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-dim);
+  }
+
+  .meta-row label{ display:flex; align-items:center; gap:6px; }
+
+  /* ---- Status ---- */
+  #status{
+    text-align:center;
+    font-family:'Space Mono', monospace;
+    font-size: 13px;
+    color: var(--ink-dim);
+    margin: 28px 0 0;
+    min-height: 18px;
+  }
+  #status.error{ color: var(--velvet); }
+
+  /* ---- Results: film strip ---- */
+  #resultados{
+    margin-top: 24px;
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+  }
+
+  .card{
+    display:flex;
+    align-items:center;
+    gap: 16px;
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--marquee);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    animation: reveal .25s ease both;
+    position: relative;
+  }
+
+  .tooltip::after{
+    content:"";
+    position:absolute;
+    left:12px;
+    top:-10px;
+    border-left:8px solid transparent;
+    border-right:8px solid transparent;
+    border-bottom:10px solid #cfae68;
+  }
+
+  .tooltip{
+    position:fixed;
+    left:0;
+    top:0;
+    width:340px;
+    max-width:40vw;
+    background:#cfae68;
+    color:#1a1408;
+    padding:12px 14px;
+    border-radius:8px;
+    font-size:13px;
+    line-height:1.5;
+    font-weight:500;
+    box-shadow:0 8px 24px rgba(0,0,0,.22), 0 2px 8px rgba(0,0,0,.12);
+    border:1px solid rgba(0,0,0,.15);
+    z-index:9999;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:opacity .08s ease;
+  }
+  @keyframes reveal{
+    from{ opacity:0; transform: translateY(6px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  .card .idx{
+    font-family:'Bebas Neue', sans-serif;
+    font-size: 26px;
+    color: var(--marquee-dim);
+    width: 34px;
+    text-align:center;
+    flex-shrink:0;
+  }
+
+  .card .info{ flex:1; min-width:0; }
+
+  .card .titulo{
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+
+  .card .categoria{
+    font-family:'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--marquee-dim);
+    margin-top: 3px;
+  }
+
+  footer{
+    text-align:center;
+    margin-top: 48px;
+    font-family:'Space Mono', monospace;
+    font-size: 11px;
+    color: #4d4f5c;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .card{ animation:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Sesión continua · Recomendador</p>
+    <h1>Buscador de Películas</h1>
+    <p class="sub">Escribe lo que quieres ver y consulta el motor de recomendación</p>
+  </header>
+
+  <div class="sprockets">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <form id="form-buscar" class="ticket">
+    <div class="field-row">
+      <input
+        type="text"
+        id="consulta"
+        placeholder="Ej: película de ciencia ficción con viajes en el tiempo"
+        autocomplete="off"
+        required
+      >
+      <button type="submit" id="btn-buscar">Buscar</button>
+    </div>
+    <div class="meta-row">
+      <label for="n-resultados">Resultados
+        <select id="n-resultados" class="n-select">
+          <option value="3">3</option>
+          <option value="5" selected>5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+        </select>
+      </label>
+      <label for="modo">Modo
+        <select id="modo" class="n-select">
+          <option value="local" selected>Local</option>
+          <option value="online">Online</option>
+        </select>
+      </label>
+      <span id="api-indicator">API: <span id="api-url-display"></span></span>
+    </div>
+  </form>
+
+  <p id="status"></p>
+  <div id="resultados"></div>
+
+  <footer>Consumiendo <code>POST /buscar</code> desde tu main.py</footer>
+</div>
+
+<script>
+  // ==========================
+  // Configuración
+  // ==========================
+  // Ajusta esta URL a donde corre tu FastAPI (uvicorn main:app --reload
+  // suele exponerlo en http://127.0.0.1:8000)
+  const API_BASE_URL = "http://127.0.0.1:8000";
+  const ENDPOINT = `${API_BASE_URL}/buscar`;
+
+  document.getElementById("api-url-display").textContent = API_BASE_URL;
+
+  // ==========================
+  // Elementos
+  // ==========================
+  const form = document.getElementById("form-buscar");
+  const inputConsulta = document.getElementById("consulta");
+  const selectN = document.getElementById("n-resultados");
+  const selectModo = document.getElementById("modo");
+  const btnBuscar = document.getElementById("btn-buscar");
+  const statusEl = document.getElementById("status");
+  const resultadosEl = document.getElementById("resultados");
+
+  // ==========================
+  // Utilidades de estado visual
+  // ==========================
+  function setStatus(mensaje, esError = false) {
+    statusEl.textContent = mensaje;
+    statusEl.classList.toggle("error", esError);
+  }
+
+  function limpiarResultados() {
+    resultadosEl.innerHTML = "";
+  }
+
+  function renderResultados(peliculas) {
+    limpiarResultados();
+
+    if (!peliculas.length) {
+      setStatus("Sin coincidencias para esa consulta.");
+      return;
+    }
+
+    peliculas.forEach((p, i) => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.style.animationDelay = `${i * 40}ms`;
+
+      card.innerHTML = `
+        <div class="idx">${String(i + 1).padStart(2, "0")}</div>
+
+        <div class="info">
+          <div class="titulo">${escapeHtml(p.titulo ?? "Sin título")}</div>
+          <div class="categoria">${escapeHtml(p.categoria ?? "Sin categoría")}</div>
+        </div>
+
+        
+      `;
+
+      
+      card.addEventListener("mouseenter", () => {
+        tooltipGlobal.innerHTML = escapeHtml(
+          p.descripcion ?? "Sin descripción disponible"
+        );
+        tooltipGlobal.style.opacity = "1";
+        tooltipGlobal.style.visibility = "visible";
+      });
+
+      card.addEventListener("mouseleave", () => {
+        tooltipGlobal.style.opacity = "0";
+        tooltipGlobal.style.visibility = "hidden";
+      });
+
+      resultadosEl.appendChild(card);
+
+    });
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement("div");
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  // ==========================
+  // Llamada a la API
+  // ==========================
+  async function buscarPeliculas(consulta, nResultados, modo) {
+    const respuesta = await fetch(ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        consulta: consulta,
+        n_resultados: nResultados,
+        modo: modo
+      })
+    });
+
+    if (!respuesta.ok) {
+      let detalle = respuesta.statusText;
+      try {
+        const cuerpoError = await respuesta.json();
+        detalle = cuerpoError.detail || detalle;
+      } catch (_) { /* respuesta sin JSON */ }
+      throw new Error(`Error ${respuesta.status}: ${detalle}`);
+    }
+
+    return respuesta.json();
+  }
+
+  // ==========================
+  // Manejo del formulario
+  // ==========================
+  
+
+  const tooltipGlobal = document.createElement("div");
+  tooltipGlobal.className = "tooltip";
+  document.body.appendChild(tooltipGlobal);
+
+  document.addEventListener("mousemove", (e) => {
+    tooltipGlobal.style.left = (e.clientX + 18) + "px";
+    tooltipGlobal.style.top = (e.clientY + 18) + "px";
+  });
+
+
+form.addEventListener("submit", async (evento) => {
+    evento.preventDefault();
+
+    const consulta = inputConsulta.value.trim();
+    const nResultados = parseInt(selectN.value, 10);
+    const modo = selectModo.value;
+
+    if (!consulta) {
+      setStatus("Escribe una consulta antes de buscar.", true);
+      return;
+    }
+
+    btnBuscar.disabled = true;
+    limpiarResultados();
+    setStatus(`Consultando el recomendador (modo ${modo === "online" ? "Online" : "Local"})…`);
+
+    try {
+      const data = await buscarPeliculas(consulta, nResultados, modo);
+      const etiquetaModo = modo === "online" ? "Online" : "Local";
+      setStatus(`${data.cantidad} resultado(s) para "${data.consulta}" — modo ${etiquetaModo}`);
+      renderResultados(data.resultados || []);
+    } catch (error) {
+      setStatus(
+        error.message.includes("Failed to fetch")
+          ? "No se pudo conectar con la API. ¿Está corriendo uvicorn? ¿Revisaste CORS?"
+          : error.message,
+        true
+      );
+    } finally {
+      btnBuscar.disabled = false;
+    }
+  });
+</script>
+
+</body>
+</html>

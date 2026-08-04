@@ -1,0 +1,37 @@
+23:11:34 | INFO     | GPU detectada: NVIDIA GeForce RTX 4060 Ti
+23:11:34 | INFO     | Versión CUDA: 12.8
+23:11:34 | INFO     | VRAM total: 8.00 GB
+23:11:34 | INFO     | VRAM utilizada: 0.00 GB | VRAM libre: 8.00 GB
+23:11:34 | INFO     | PyTorch 2.11.0+cu128
+23:11:35 | INFO     | Dataset de entrenamiento cargado: 27500 filas.
+23:18:56 | INFO     | GPU detectada: NVIDIA GeForce RTX 4060 Ti
+23:18:56 | INFO     | Versión CUDA: 12.8
+23:18:56 | INFO     | VRAM total: 8.00 GB
+23:18:56 | INFO     | VRAM utilizada: 0.00 GB | VRAM libre: 8.00 GB
+23:18:56 | INFO     | PyTorch 2.11.0+cu128
+23:18:56 | INFO     | Dataset de entrenamiento cargado: 27500 filas.
+23:18:56 | INFO     | Split train/val: 24768 filas / 20649 anclas (train) | 2732 filas / 2295 anclas (val).
+23:18:56 | INFO     | Cargando modelo base: BAAI/bge-m3
+23:19:53 | INFO     | Configuración de entrenamiento guardada en: C:\Users\USER\Desktop\Proyecto_final_SDR\logs\training_config.json
+23:19:54 | INFO     | Iniciando entrenamiento...
+23:19:54 | INFO     | Entrenamiento iniciado: 1 épocas, 63 steps estimados.
+23:20:47 | INFO     | step=10/63 | loss=2.1153 | lr=1.93e-05 | eta=279s | vram=2.14/1.07GB libre
+23:21:55 | INFO     | step=20/63 | loss=1.1392 | lr=1.57e-05 | eta=260s | vram=2.14/1.07GB libre
+23:23:12 | INFO     | step=30/63 | loss=1.1451 | lr=1.21e-05 | eta=218s | vram=2.14/1.07GB libre
+23:24:14 | INFO     | step=40/63 | loss=1.0138 | lr=8.57e-06 | eta=149s | vram=2.14/1.07GB libre
+23:25:23 | INFO     | step=50/63 | loss=1.0845 | lr=5.71e-06 | eta=86s | vram=2.14/1.07GB libre
+23:25:47 | INFO     | step=50/63 | eval_loss=0.8746 | eta=92s | vram=2.14/1.07GB libre
+23:27:03 | INFO     | step=60/63 | loss=0.9918 | lr=2.14e-06 | eta=22s | vram=2.14/1.07GB libre
+23:27:45 | INFO     | step=63/63 | eval_loss=0.8611 | eta=0s | vram=2.14/1.07GB libre
+23:27:50 | INFO     | Época 1 completada en 476.2 s.
+23:27:50 | INFO     | step=63/63 | eta=0s | vram=2.14/1.07GB libre
+23:27:56 | INFO     | Entrenamiento finalizado.
+23:28:00 | INFO     | Modelo final guardado en: C:\Users\USER\Desktop\Proyecto_final_SDR\models\bge-m3-finetuned (cargar con SentenceTransformer('C:\Users\USER\Desktop\Proyecto_final_SDR\models\bge-m3-finetuned'))
+23:28:00 | INFO     | Historial de entrenamiento guardado en: C:\Users\USER\Desktop\Proyecto_final_SDR\logs\training_history.json y C:\Users\USER\Desktop\Proyecto_final_SDR\logs\metrics.csv
+23:28:00 | INFO     | Gráfico guardado en: C:\Users\USER\Desktop\Proyecto_final_SDR\logs\graficos\loss.png
+23:28:00 | INFO     | Gráfico guardado en: C:\Users\USER\Desktop\Proyecto_final_SDR\logs\graficos\learning_rate.png
+23:28:01 | INFO     | Gráfico guardado en: C:\Users\USER\Desktop\Proyecto_final_SDR\logs\graficos\training_curve.png
+23:28:01 | INFO     | Gráfico guardado en: C:\Users\USER\Desktop\Proyecto_final_SDR\logs\graficos\validation_curve.png
+23:28:01 | INFO     | Evaluando modelo ORIGINAL (BAAI/bge-m3, sin fine-tuning)...
+23:29:33 | INFO     | Evaluando modelo FINE-TUNED (C:\Users\USER\Desktop\Proyecto_final_SDR\models\bge-m3-finetuned)...
+23:29:50 | INFO     | Comparación de modelos guardada en: C:\Users\USER\Desktop\Proyecto_final_SDR\logs\evaluacion_comparativa.json

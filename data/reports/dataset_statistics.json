@@ -1,0 +1,375 @@
+{
+  "numero_peliculas": 44471,
+  "numero_generos": 20,
+  "distribucion_generos": {
+    "Drama": 20000,
+    "Comedy": 12798,
+    "Thriller": 7580,
+    "Romance": 6667,
+    "Action": 6559,
+    "Horror": 4657,
+    "Crime": 4266,
+    "Documentary": 3884,
+    "Adventure": 3464,
+    "Science Fiction": 3021,
+    "Family": 2729,
+    "Mystery": 2448,
+    "Fantasy": 2286,
+    "Animation": 1915,
+    "Foreign": 1596,
+    "Music": 1587,
+    "History": 1379,
+    "War": 1309,
+    "Western": 1035,
+    "TV Movie": 749
+  },
+  "promedio_keywords_por_pelicula": 3.5089159227361653,
+  "promedio_actores_por_pelicula": 4.460210024510355,
+  "longitud_promedio_texto": 557.9831350767917,
+  "top_generos": [
+    {
+      "nombre": "Drama",
+      "cantidad": 20000
+    },
+    {
+      "nombre": "Comedy",
+      "cantidad": 12798
+    },
+    {
+      "nombre": "Thriller",
+      "cantidad": 7580
+    },
+    {
+      "nombre": "Romance",
+      "cantidad": 6667
+    },
+    {
+      "nombre": "Action",
+      "cantidad": 6559
+    },
+    {
+      "nombre": "Horror",
+      "cantidad": 4657
+    },
+    {
+      "nombre": "Crime",
+      "cantidad": 4266
+    },
+    {
+      "nombre": "Documentary",
+      "cantidad": 3884
+    },
+    {
+      "nombre": "Adventure",
+      "cantidad": 3464
+    },
+    {
+      "nombre": "Science Fiction",
+      "cantidad": 3021
+    },
+    {
+      "nombre": "Family",
+      "cantidad": 2729
+    },
+    {
+      "nombre": "Mystery",
+      "cantidad": 2448
+    },
+    {
+      "nombre": "Fantasy",
+      "cantidad": 2286
+    },
+    {
+      "nombre": "Animation",
+      "cantidad": 1915
+    },
+    {
+      "nombre": "Foreign",
+      "cantidad": 1596
+    },
+    {
+      "nombre": "Music",
+      "cantidad": 1587
+    },
+    {
+      "nombre": "History",
+      "cantidad": 1379
+    },
+    {
+      "nombre": "War",
+      "cantidad": 1309
+    },
+    {
+      "nombre": "Western",
+      "cantidad": 1035
+    },
+    {
+      "nombre": "TV Movie",
+      "cantidad": 749
+    }
+  ],
+  "top_keywords": [
+    {
+      "nombre": "woman director",
+      "cantidad": 2995
+    },
+    {
+      "nombre": "independent film",
+      "cantidad": 1914
+    },
+    {
+      "nombre": "murder",
+      "cantidad": 1281
+    },
+    {
+      "nombre": "based on novel",
+      "cantidad": 816
+    },
+    {
+      "nombre": "musical",
+      "cantidad": 726
+    },
+    {
+      "nombre": "sex",
+      "cantidad": 677
+    },
+    {
+      "nombre": "violence",
+      "cantidad": 647
+    },
+    {
+      "nombre": "nudity",
+      "cantidad": 627
+    },
+    {
+      "nombre": "revenge",
+      "cantidad": 618
+    },
+    {
+      "nombre": "biography",
+      "cantidad": 609
+    },
+    {
+      "nombre": "suspense",
+      "cantidad": 578
+    },
+    {
+      "nombre": "love",
+      "cantidad": 563
+    },
+    {
+      "nombre": "female nudity",
+      "cantidad": 551
+    },
+    {
+      "nombre": "sport",
+      "cantidad": 532
+    },
+    {
+      "nombre": "police",
+      "cantidad": 448
+    },
+    {
+      "nombre": "duringcreditsstinger",
+      "cantidad": 439
+    },
+    {
+      "nombre": "teenager",
+      "cantidad": 432
+    },
+    {
+      "nombre": "sequel",
+      "cantidad": 431
+    },
+    {
+      "nombre": "friendship",
+      "cantidad": 402
+    },
+    {
+      "nombre": "world war ii",
+      "cantidad": 389
+    }
+  ],
+  "top_directores": [
+    {
+      "nombre": "John Ford",
+      "cantidad": 66
+    },
+    {
+      "nombre": "Michael Curtiz",
+      "cantidad": 65
+    },
+    {
+      "nombre": "Werner Herzog",
+      "cantidad": 54
+    },
+    {
+      "nombre": "Alfred Hitchcock",
+      "cantidad": 53
+    },
+    {
+      "nombre": "Georges Méliès",
+      "cantidad": 51
+    },
+    {
+      "nombre": "Woody Allen",
+      "cantidad": 49
+    },
+    {
+      "nombre": "Jean-Luc Godard",
+      "cantidad": 47
+    },
+    {
+      "nombre": "Sidney Lumet",
+      "cantidad": 46
+    },
+    {
+      "nombre": "Charlie Chaplin",
+      "cantidad": 44
+    },
+    {
+      "nombre": "Raoul Walsh",
+      "cantidad": 43
+    },
+    {
+      "nombre": "William A. Wellman",
+      "cantidad": 42
+    },
+    {
+      "nombre": "Henry Hathaway",
+      "cantidad": 42
+    },
+    {
+      "nombre": "Martin Scorsese",
+      "cantidad": 40
+    },
+    {
+      "nombre": "Richard Thorpe",
+      "cantidad": 40
+    },
+    {
+      "nombre": "Ingmar Bergman",
+      "cantidad": 39
+    },
+    {
+      "nombre": "George Cukor",
+      "cantidad": 38
+    },
+    {
+      "nombre": "John Huston",
+      "cantidad": 38
+    },
+    {
+      "nombre": "Fritz Lang",
+      "cantidad": 38
+    },
+    {
+      "nombre": "Robert Altman",
+      "cantidad": 37
+    },
+    {
+      "nombre": "Mervyn LeRoy",
+      "cantidad": 37
+    }
+  ],
+  "top_actores": [
+    {
+      "nombre": "Jr.",
+      "cantidad": 119
+    },
+    {
+      "nombre": "John Wayne",
+      "cantidad": 106
+    },
+    {
+      "nombre": "Jackie Chan",
+      "cantidad": 101
+    },
+    {
+      "nombre": "Christopher Lee",
+      "cantidad": 97
+    },
+    {
+      "nombre": "Robert De Niro",
+      "cantidad": 96
+    },
+    {
+      "nombre": "Michael Caine",
+      "cantidad": 96
+    },
+    {
+      "nombre": "Gérard Depardieu",
+      "cantidad": 94
+    },
+    {
+      "nombre": "Samuel L. Jackson",
+      "cantidad": 84
+    },
+    {
+      "nombre": "Donald Sutherland",
+      "cantidad": 81
+    },
+    {
+      "nombre": "Danny Glover",
+      "cantidad": 78
+    },
+    {
+      "nombre": "Harvey Keitel",
+      "cantidad": 77
+    },
+    {
+      "nombre": "Nicolas Cage",
+      "cantidad": 76
+    },
+    {
+      "nombre": "Bruce Willis",
+      "cantidad": 73
+    },
+    {
+      "nombre": "Susan Sarandon",
+      "cantidad": 73
+    },
+    {
+      "nombre": "Gene Hackman",
+      "cantidad": 72
+    },
+    {
+      "nombre": "Christopher Walken",
+      "cantidad": 72
+    },
+    {
+      "nombre": "Alec Baldwin",
+      "cantidad": 70
+    },
+    {
+      "nombre": "John Hurt",
+      "cantidad": 70
+    },
+    {
+      "nombre": "Eric Roberts",
+      "cantidad": 70
+    },
+    {
+      "nombre": "James Mason",
+      "cantidad": 70
+    }
+  ],
+  "cantidad_tripletas": 23857,
+  "cantidad_errores": 0,
+  "cantidad_advertencias": 7,
+  "cobertura": {
+    "peliculas_sin_positivo": 21527,
+    "peliculas_sin_negativo": 0,
+    "peliculas_sin_tripleta": 21527
+  },
+  "evaluacion_hard_negative_mining": {
+    "cantidad_tripletas_originales": 23857,
+    "cantidad_tripletas_hard": 3643,
+    "similitud_promedio_anchor_positivo": 0.09133673135767281,
+    "similitud_promedio_anchor_positivo_subset_hard": 0.20453041449354925,
+    "similitud_promedio_anchor_negativo_facil": 0.009192379595087395,
+    "similitud_promedio_anchor_negativo_hard": 0.15588487510293714,
+    "brecha_positivo_negativo_facil": 0.0821,
+    "brecha_positivo_negativo_hard": 0.0486
+  }
+}

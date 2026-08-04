@@ -1,0 +1,67 @@
+# ==========================
+# Python
+# ==========================
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+*.egg
+
+# ==========================
+# Modelo fine-tuned + checkpoints de entrenamiento (pesado: ~6.5GB)
+# Regenerar con: scripts/finetuning.py (checkpoints) -> models/bge-m3-finetuned queda
+# como salida final. Ver CLAUDE.md / README para transferir el modelo ya entrenado
+# a otro equipo sin reentrenar.
+# ==========================
+models/
+
+# ==========================
+# Bases vectoriales ChromaDB (pesado: ~780MB combinado, binario, no versionable
+# de forma útil en git). Regenerar con clases_sr/cargar.py (peliculas_original
+# se regenera con scripts/verificar_migracion.py).
+# ==========================
+clases_sr/chroma_db/
+reports/_chroma_comparacion_original/
+
+# ==========================
+# Datasets generados por el pipeline (pesado: ~300MB). Regenerar con
+# scripts/preparar_dataset.py -> generar_dataset_entrenamiento.py ->
+# validar_dataset_entrenamiento.py. Requiere credenciales de Kaggle para el
+# primer paso. data/reports/ NO se ignora: son reportes/gráficos livianos,
+# no el dataset en sí.
+# ==========================
+data/processed/
+data/training/
+
+# TensorBoard
+runs/
+
+# ==========================
+# Config local de Claude Code (permisos y rutas específicas de esta máquina)
+# ==========================
+.claude/settings.local.json
+
+# ==========================
+# Credenciales / entorno local
+# ==========================
+.env
+.env.*
+~/.kaggle/kaggle.json
+kaggle.json
+
+# ==========================
+# OS
+# ==========================
+Thumbs.db
+.DS_Store
+
+# ==========================
+# Documentos internos de trabajo (no forman parte de la entrega/repo público)
+# ==========================
+CLAUDE.md
+AUDITORIA.md
+CHECKLIST_VERIFICACION.md
+BORRADOR_INFORME_IMPLEMENTACION_OFFLINE.md
+RESUMEN_PROYECTO.md

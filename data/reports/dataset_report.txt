@@ -1,0 +1,133 @@
+============================================================
+REPORTE DE VALIDACIÓN Y ESTADÍSTICAS DEL DATASET
+============================================================
+
+--- 1. VALIDACIÓN ---
+Errores encontrados: 0
+Advertencias encontradas: 7
+  [ADVERTENCIA] (campos_vacios) 2183 películas con 'categoria' vacío.
+  [ADVERTENCIA] (campos_vacios) 13587 películas con 'keywords_limpio' vacío.
+  [ADVERTENCIA] (campos_vacios) 804 películas con 'director' vacío.
+  [ADVERTENCIA] (campos_vacios) 2336 películas con 'reparto' vacío.
+  [ADVERTENCIA] (cobertura) 21527 películas sin ningún par positivo.
+  [ADVERTENCIA] (cobertura) 0 películas sin ningún par negativo.
+  [ADVERTENCIA] (cobertura) 21527 películas sin ninguna tripleta.
+
+--- 2. ESTADÍSTICAS GENERALES ---
+Número de películas: 44471
+Número de géneros distintos: 20
+Promedio de keywords por película: 3.51
+Promedio de actores por película: 4.46
+Longitud promedio del texto (caracteres): 558.0
+Cantidad de tripletas: 23857
+
+Top 20 géneros:
+   1. Drama (20000)
+   2. Comedy (12798)
+   3. Thriller (7580)
+   4. Romance (6667)
+   5. Action (6559)
+   6. Horror (4657)
+   7. Crime (4266)
+   8. Documentary (3884)
+   9. Adventure (3464)
+  10. Science Fiction (3021)
+  11. Family (2729)
+  12. Mystery (2448)
+  13. Fantasy (2286)
+  14. Animation (1915)
+  15. Foreign (1596)
+  16. Music (1587)
+  17. History (1379)
+  18. War (1309)
+  19. Western (1035)
+  20. TV Movie (749)
+
+Top 20 keywords:
+   1. woman director (2995)
+   2. independent film (1914)
+   3. murder (1281)
+   4. based on novel (816)
+   5. musical (726)
+   6. sex (677)
+   7. violence (647)
+   8. nudity (627)
+   9. revenge (618)
+  10. biography (609)
+  11. suspense (578)
+  12. love (563)
+  13. female nudity (551)
+  14. sport (532)
+  15. police (448)
+  16. duringcreditsstinger (439)
+  17. teenager (432)
+  18. sequel (431)
+  19. friendship (402)
+  20. world war ii (389)
+
+Top 20 directores:
+   1. John Ford (66)
+   2. Michael Curtiz (65)
+   3. Werner Herzog (54)
+   4. Alfred Hitchcock (53)
+   5. Georges Méliès (51)
+   6. Woody Allen (49)
+   7. Jean-Luc Godard (47)
+   8. Sidney Lumet (46)
+   9. Charlie Chaplin (44)
+  10. Raoul Walsh (43)
+  11. William A. Wellman (42)
+  12. Henry Hathaway (42)
+  13. Martin Scorsese (40)
+  14. Richard Thorpe (40)
+  15. Ingmar Bergman (39)
+  16. George Cukor (38)
+  17. John Huston (38)
+  18. Fritz Lang (38)
+  19. Robert Altman (37)
+  20. Mervyn LeRoy (37)
+
+Top 20 actores:
+   1. Jr. (119)
+   2. John Wayne (106)
+   3. Jackie Chan (101)
+   4. Christopher Lee (97)
+   5. Robert De Niro (96)
+   6. Michael Caine (96)
+   7. Gérard Depardieu (94)
+   8. Samuel L. Jackson (84)
+   9. Donald Sutherland (81)
+  10. Danny Glover (78)
+  11. Harvey Keitel (77)
+  12. Nicolas Cage (76)
+  13. Bruce Willis (73)
+  14. Susan Sarandon (73)
+  15. Gene Hackman (72)
+  16. Christopher Walken (72)
+  17. Alec Baldwin (70)
+  18. John Hurt (70)
+  19. Eric Roberts (70)
+  20. James Mason (70)
+
+--- 3. HARD NEGATIVE MINING: EVALUACIÓN ---
+Tripletas fáciles: 23857
+Tripletas hard: 3643
+Similitud promedio ancla-positivo (todos los positivos): 0.0913
+Similitud promedio ancla-positivo (solo pares con hard negative): 0.2045
+Similitud promedio ancla-negativo (fácil): 0.0092
+Similitud promedio ancla-negativo (hard): 0.1559
+Brecha positivo-negativo (fácil): 0.0821
+Brecha positivo-negativo (hard): 0.0486
+
+Interpretación: por construcción, cada tripleta hard cumple similitud(ancla,positivo) > similitud(ancla,hard_negativo) + 0.02 (margen configurable), así que la brecha (hard) siempre debería ser positiva. Cuanto más chica esa brecha -sin llegar a negativa-, más le cuesta al modelo separar ancla de negativo, y más útil es la tripleta para el entrenamiento.
+
+--- 4. COMPARACIÓN CON LA EJECUCIÓN ANTERIOR ---
+Métrica                                                Antes          Ahora
+Películas sin positivo                                   N/D          21527
+Películas sin tripleta                                   N/D          21527
+Cantidad de tripletas (fáciles)                         4130          23857
+Cantidad de hard negatives / tripletas hard             4016           3643
+Similitud promedio ancla-positivo                     0.1300         0.0913
+Similitud promedio ancla-negativo (fácil)             0.0086         0.0092
+Similitud promedio ancla-negativo (hard)              0.2356         0.1559
+Brecha positivo-negativo (hard)                      -0.1056         0.0486

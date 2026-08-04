@@ -1,0 +1,22 @@
+kagglehub
+pandas
+numpy
+scikit-learn
+matplotlib
+
+# Etapa 4 (fine-tuning). NO se lista torch: ya está instalado con soporte
+# CUDA (torch 2.7.1+cu118) - un `pip install -r` sin cuidado podría
+# reemplazarlo por la build CPU-only. Instalar aparte si hace falta.
+sentence-transformers
+datasets
+accelerate
+tensorboard
+
+# Etapa 5 (migración del recomendador al modelo fine-tuned)
+chromadb
+requests
+fastapi
+uvicorn
+
+# Etapa 6 (modo Online: InferenceClient contra la Inference API de Hugging Face)
+huggingface_hub
